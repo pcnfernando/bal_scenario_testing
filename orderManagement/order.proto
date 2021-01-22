@@ -1,0 +1,15 @@
+syntax = "proto3";
+package grpc_service;
+import "google/protobuf/wrappers.proto";
+service orderManagement {
+    rpc createOrder(orderInfo) returns (google.protobuf.StringValue);
+    rpc retrieveOrder(google.protobuf.StringValue) returns (orderInfo);
+    rpc updateOrder(orderInfo) returns (google.protobuf.StringValue);
+    rpc deleteOrder(google.protobuf.StringValue) returns (google.protobuf.StringValue);
+}
+message orderInfo {
+	string orderId = 1;
+	string customer = 2;
+	string description = 3;
+    string paymentStatus = 4;
+}
